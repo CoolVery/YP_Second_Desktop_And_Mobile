@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="YP_desktop.Authorization">
+
+
+
+	<StackPanel
+		Width="400"
+		VerticalAlignment="Center">
+		<Border
+			BorderBrush="White"
+			BorderThickness="3"
+			CornerRadius="10"
+			BoxShadow="15 15 10 0 Black">
+			<StackPanel>
+				<TextBlock
+					Padding="0 10 0 30 "
+					TextAlignment="Center"
+					Text="Авторзация"
+					FontSize="30"/>
+				<TextBox
+					Margin="20 0 20 20"
+					Watermark="Логин"/>
+				<TextBox
+					Margin="20 0 20 30"
+					Watermark="sd"/>
+			</StackPanel>
+		</Border>
+
+	</StackPanel>
+</UserControl>
