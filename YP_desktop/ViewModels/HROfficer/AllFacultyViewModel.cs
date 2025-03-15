@@ -6,5 +6,9 @@ namespace YP_desktop.ViewModels.HROfficer
 {
 	public class AllFacultyViewModel : ReactiveObject
 	{
+		public AllFacultyViewModel()
+		{
+			
+		}
 	}
 }

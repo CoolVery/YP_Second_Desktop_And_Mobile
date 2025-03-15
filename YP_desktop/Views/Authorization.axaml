@@ -3,7 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="YP_desktop.Authorization">
+             x:Class="YP_desktop.Views.Authorization"
+			 xmlns:vm="using:YP_desktop.ViewModels"
+			 x:DataType="vm:AuthorizationViewModel">
 
 
 
@@ -13,7 +15,7 @@
 		<Border
 			BorderBrush="White"
 			BorderThickness="3"
-			CornerRadius="10"
+			CornerRadius="20"
 			BoxShadow="15 15 10 0 Black">
 			<StackPanel>
 				<TextBlock
@@ -23,10 +25,23 @@
 					FontSize="30"/>
 				<TextBox
 					Margin="20 0 20 20"
-					Watermark="Логин"/>
+					Watermark="Логин"
+					Text="{Binding Login}"
+					CornerRadius="20"/>
 				<TextBox
 					Margin="20 0 20 30"
-					Watermark="sd"/>
+					Watermark="sd"
+					Text="{Binding Password}"
+					CornerRadius="20"/>
+				<Button 
+					HorizontalAlignment="Center"
+					Content="Войти"
+					Padding="50 10 50 10"
+					Margin="0 0 0 20"
+					FontSize="20"
+					CornerRadius="20"
+					Command="{Binding SignIn}"
+					/>
 			</StackPanel>
 		</Border>
 
