@@ -18,16 +18,26 @@
 				Width="200"
 				Margin="30 10 0 10"
 				Watermark="Поиск по названию"
-				CornerRadius="10"/>
+				CornerRadius="10"
+				Text="{Binding SearchByName}"/>
 			<Button
 				Margin="30 0 0 0"
 				Padding="0 10 0 10"
 				Width="200"
 				HorizontalContentAlignment="Center"
 				CornerRadius="10"
-				Content="Создать факультет"/>
+				Content="Создать факультет"
+				Command="{Binding ToCreateNewFaculty}"/>
+			<Button
+				Margin="30 0 0 0"
+				Padding="0 10 0 10"
+				Width="200"
+				HorizontalContentAlignment="Center"
+				CornerRadius="10"
+				Content="Просмотреть студентов"
+				Command="{Binding ToAllStudent}"/>
 		</StackPanel>
-		<ListBox Grid.Row="1" ItemsSource="{Binding AllFaculties}">
+		<ListBox Grid.Row="1" ItemsSource="{Binding CurrentFaculties}">
 			
 			<ListBox.ItemTemplate>
 				<DataTemplate>

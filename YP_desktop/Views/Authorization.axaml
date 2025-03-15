@@ -30,7 +30,7 @@
 					CornerRadius="20"/>
 				<TextBox
 					Margin="20 0 20 30"
-					Watermark="sd"
+					Watermark="Пароль"
 					Text="{Binding Password}"
 					CornerRadius="20"/>
 				<Button 

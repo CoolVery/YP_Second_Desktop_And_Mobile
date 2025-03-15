@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YP_desktop.Models
+namespace YP_desktop.Models.Faculties
 {
     [Table("faculties")]
     public class Faculty : BaseModel
