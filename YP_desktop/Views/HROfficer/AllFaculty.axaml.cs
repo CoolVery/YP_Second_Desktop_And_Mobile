@@ -11,5 +11,6 @@ public partial class AllFaculty : UserControl
     {
         InitializeComponent();
         DataContext = new AllFacultyViewModel();
+        
     }
 }

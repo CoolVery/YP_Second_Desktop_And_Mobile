@@ -12,40 +12,47 @@
 		</Style>
 	</UserControl.Styles>
 	<Grid RowDefinitions="*, 5*" ShowGridLines="True">
-		<StackPanel Orientation="Horizontal">
+		<StackPanel 
+			Orientation="Horizontal">
 			<TextBox
 				Width="200"
 				Margin="30 10 0 10"
-				Watermark="Поиск по названию"/>
+				Watermark="Поиск по названию"
+				CornerRadius="10"/>
 			<Button
 				Margin="30 0 0 0"
-				Padding="0 15 0 15"
+				Padding="0 10 0 10"
 				Width="200"
-				
+				HorizontalContentAlignment="Center"
+				CornerRadius="10"
 				Content="Создать факультет"/>
 		</StackPanel>
-		<ListBox Grid.Row="1" >
-			<Border
+		<ListBox Grid.Row="1" ItemsSource="{Binding AllFaculties}">
+			
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border
 				BorderBrush="LightBlue"
 				BorderThickness="2"
 				Padding="10 10 10 10"
 				BoxShadow="10 5 10 Black"
 				CornerRadius="10">
-				<Grid ColumnDefinitions="*, *, *, *">
-					<TextBlock
-						Text="Название"
-					/>
-					<TextBlock
-						Grid.Column="1"
-						Text="Тип"/>
-					<TextBlock
-						Grid.Column="2"
-						Text="Тип предмета"/>
-					<TextBlock
-						Grid.Column="3"
-						Text="Декан"/>
-				</Grid>
-			</Border>
+						<Grid ColumnDefinitions="*, *, *, *">
+							<TextBlock
+								Text="{Binding Name}"/>
+							<TextBlock
+								Grid.Column="1"
+								Text="{Binding Hours, StringFormat='Количество часов: {0}'}"/>
+							<TextBlock
+								Grid.Column="2"
+								Text="{Binding SubjectTypeId.Name, StringFormat='Тип предмета: {0}'}"/>
+							<TextBlock
+								Grid.Column="3"
+								Text="{Binding DeanId.FullName}"/>
+						</Grid>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
 		</ListBox>
 	</Grid>
 </UserControl>

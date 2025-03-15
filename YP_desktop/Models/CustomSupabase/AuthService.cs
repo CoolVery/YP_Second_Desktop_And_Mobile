@@ -24,7 +24,6 @@ namespace YP_desktop.Models.Supabase
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка регистрации: {ex.Message}");
                 return null;
             }
         }

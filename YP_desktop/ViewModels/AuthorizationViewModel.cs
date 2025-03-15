@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using ReactiveUI;
 using YP_desktop.Models.Supabase;
 using YP_desktop.Views.HROfficer;
+using YP_desktop.Views.Student;
+using YP_desktop.Views.Teacher;
 
 namespace YP_desktop.ViewModels
 {
@@ -20,7 +22,20 @@ namespace YP_desktop.ViewModels
             var userSupabase = await authService.SignUpAsync(Login, Password);
             if (userSupabase != null)
             {
-                MainWindowViewModel.LinkMWViewModel.Uc = new AllFaculty();
+                switch (userSupabase.RoleId)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        MainWindowViewModel.LinkMWViewModel.Uc = new MainWindowStudent();
+                        break;
+                    case 3:
+                        MainWindowViewModel.LinkMWViewModel.Uc = new MainWindowTeacher();
+                        break;
+                    case 4:
+                        MainWindowViewModel.LinkMWViewModel.Uc = new AllFaculty();
+                        break;
+                }
             }
 
 

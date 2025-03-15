@@ -21,9 +21,9 @@ namespace YP_desktop.Models
         public int Hours { get; set; }
 
         [Column("id_type_subject")]
-        public int SubjectTypeId { get; set; }
+        public TypeOfSubject SubjectTypeId { get; set; }
 
         [Column("id_dean_faculty")]
-        public int DeanId { get; set; }
+        public Dean DeanId { get; set; }
     }
 }
