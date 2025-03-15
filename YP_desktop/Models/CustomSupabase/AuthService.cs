@@ -16,11 +16,11 @@ namespace YP_desktop.Models.Supabase
         {
             try
             {
-                var session = await MainWindowViewModel.LinkMWViewModel.SupabaseService.Supabase.From<User>()
+                var response = await MainWindowViewModel.LinkMWViewModel.SupabaseService.Supabase.From<User>()
                     .Select(x => new object[] { x.Login, x.Password, x.Id, x.RoleId})
                     .Where(x => x.Login == email && x.Password == password)
                     .Get();
-                return session;
+                return response.Model;
             }
             catch (Exception ex)
             {

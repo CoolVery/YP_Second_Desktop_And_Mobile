@@ -20,7 +20,7 @@ namespace YP_desktop.ViewModels
             var userSupabase = await authService.SignUpAsync(Login, Password);
             if (userSupabase != null)
             {
-                //switch (us)
+                MainWindowViewModel.LinkMWViewModel.Uc = new AllFaculty();
             }
 
 

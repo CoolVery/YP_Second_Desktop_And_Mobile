@@ -13,8 +13,8 @@ namespace YP_desktop.Models.Supabase
         public SupabaseContext()
         {
             // Получение переменных окружения
-            var url = "";
-            var key = "";
+            var url = Environment.GetEnvironmentVariable("SUPABASE_URL");
+            var key = Environment.GetEnvironmentVariable("SUPABASE_KEY");
 
             // Настройка опций
             var options = new SupabaseOptions

@@ -18,13 +18,13 @@ namespace YP_desktop.Models
         public int UserId { get; set; }
 
         [Column("full_name")]
-        public string FullName { get; set; }
+        public required string FullName  { get; set; }
 
         [Column("address")]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         [Column("phone")]
-        public string Phone { get; set; }
+        public required string Phone { get; set; }
 
         [Column("id_group")]
         public int GroupId { get; set; }

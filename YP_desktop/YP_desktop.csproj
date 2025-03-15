@@ -26,6 +26,7 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.1" />
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,5 +38,7 @@
     <PackageReference Include="Supabase.Gotrue" Version="6.0.3" />
     <PackageReference Include="Supabase.Postgrest" Version="4.1.0" />
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+    <Content Include=".env" CopyToOutputDirectory="PreserveNewest" />
+
   </ItemGroup>
 </Project>
