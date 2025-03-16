@@ -6,5 +6,70 @@
              x:Class="YP_desktop.Views.HROfficer.AllStudents"
 			 xmlns:vm="using:YP_desktop.ViewModels.HROfficer"
 			 x:DataType="vm:AllStudentsViewModel">
-  Welcome to Avalonia!
+	<UserControl.Styles>
+		<Style Selector="TextBlock">
+			<Setter Property="TextAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	<Grid RowDefinitions="*, 5*" ShowGridLines="True">
+		<StackPanel
+			Orientation="Horizontal">
+			<TextBox
+				Width="200"
+				Margin="30 10 0 10"
+				Watermark="Поиск по названию"
+				CornerRadius="10"
+				Text="{Binding SearchByName}"/>
+			<Button
+				Margin="30 0 0 0"
+				Padding="0 10 0 10"
+				Width="200"
+				HorizontalContentAlignment="Center"
+				CornerRadius="10"
+				Content="К списку факультетов"
+				Command="{Binding ToAllFaculty}"/>
+			<Button
+				Margin="30 0 0 0"
+				Padding="0 10 0 10"
+				Width="200"
+				HorizontalContentAlignment="Center"
+				CornerRadius="10"
+				Content="Создать студента"
+				Command="{Binding ToCreateNewStudent}"/>
+			<Button
+				Margin="30 0 0 0"
+				Padding="0 10 0 10"
+				Width="200"
+				HorizontalContentAlignment="Center"
+				CornerRadius="10"
+				Content="К списку учителей"
+				Command="{Binding ToAllTeacher}"/>
+		</StackPanel>
+		<ListBox Grid.Row="1" ItemsSource="{Binding CurrentStudents}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border
+				BorderBrush="LightBlue"
+				BorderThickness="2"
+				Padding="10 10 10 10"
+				BoxShadow="10 5 10 Black"
+				CornerRadius="10">
+						<Grid ColumnDefinitions="*, *, *, *">
+							<TextBlock
+								Text="{Binding FullName}"/>
+							<TextBlock
+								Grid.Column="1"
+								Text="{Binding Address}"/>
+							<TextBlock
+								Grid.Column="2"
+								Text="{Binding Phone}"/>
+							<TextBlock
+								Grid.Column="3"
+								Text="{Binding GroupId.Name}"/>
+						</Grid>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
 </UserControl>

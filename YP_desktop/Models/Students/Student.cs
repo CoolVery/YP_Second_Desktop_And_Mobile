@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YP_desktop.Models
+namespace YP_desktop.Models.Students
 {
     [Table("students")]
     public class Student : BaseModel
@@ -18,15 +18,15 @@ namespace YP_desktop.Models
         public int UserId { get; set; }
 
         [Column("full_name")]
-        public required string FullName  { get; set; }
+        public string FullName { get; set; }
 
         [Column("address")]
-        public required string Address { get; set; }
+        public string Address { get; set; }
 
         [Column("phone")]
-        public required string Phone { get; set; }
+        public string Phone { get; set; }
 
         [Column("id_group")]
-        public int GroupId { get; set; }
+        public Group GroupId { get; set; }
     }
 }
