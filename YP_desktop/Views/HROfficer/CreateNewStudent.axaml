@@ -17,7 +17,7 @@
 			BoxShadow="15 15 10 Black">
 			<Grid
 				Margin="0 0 0 0"
-				RowDefinitions="*, *, *, *, *, *, *, *"
+				RowDefinitions="*, *, *, *, *, *, *, *, *, *, *"
 				ColumnDefinitions="*, 2*">
 				<Button
 					HorizontalAlignment="Left"
@@ -28,7 +28,7 @@
 					Content="Назад"
 					HorizontalContentAlignment="Center"
 					FontSize="20"
-					Command=""/>
+					Command="{Binding ToAllStudents}"/>
 				<TextBlock
 					TextAlignment="Center"
 					Grid.ColumnSpan="2"
@@ -116,7 +116,9 @@
 						SelectedItem="{Binding SelectedFacultyNewUser}">
 						<ListBox.ItemTemplate>
 							<DataTemplate>
-								<TextBlock Text="{Binding Name}"/>
+								<StackPanel>
+									<TextBlock Text="{Binding Name}"/>
+								</StackPanel>
 							</DataTemplate>
 						</ListBox.ItemTemplate>
 					</ListBox>
@@ -132,8 +134,28 @@
 						Content="Удалить"
 						Command="{Binding RemoveFacultyInNewStudent}"/>
 				</Grid>
+				<TextBlock
+					Grid.Row="7"
+					Text="Логин"
+					FontSize="20"
+					VerticalAlignment="Center"
+					Margin="0 0 0 40"/>
+				<TextBox
+					Grid.Row="7"
+					Grid.Column="1"
+					Text="{Binding NewUser.Login}"
+					Margin="0 0 0 40"/>
+				<TextBlock
+					Grid.Row="8"
+					Text="Пароль"
+					FontSize="20"
+					VerticalAlignment="Center"/>
+				<TextBox
+					Grid.Row="8"
+					Grid.Column="1"
+					Text="{Binding NewUser.Password}"/>
 				<Button
-					Grid.Row="6"
+					Grid.Row="9"
 					Grid.ColumnSpan="2"
 					HorizontalAlignment="Center"
 					Margin="0 20 0 10"
@@ -142,11 +164,11 @@
 					Content="Создать"
 					HorizontalContentAlignment="Center"
 					FontSize="20"
-					Command=""/>
+					Command="{Binding CreateNewStudentWithFaculties}"/>
 				<TextBlock
-					Grid.Row="7"
+					Grid.Row="10"
 					Grid.ColumnSpan="2"
-					Text="Факультет сохранен"
+					Text="Студент сохранен"
 					FontSize="20"
 					TextAlignment="Center"
 					Foreground="LightGreen"

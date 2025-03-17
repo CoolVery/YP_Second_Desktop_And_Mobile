@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ReactiveUI;
+using YP_desktop.Models.Students;
 using YP_desktop.Models.Supabase;
 using YP_desktop.Views.HROfficer;
-using YP_desktop.Views.Student;
+using YP_desktop.Views.StudentFolder;
 using YP_desktop.Views.Teacher;
 
 namespace YP_desktop.ViewModels
@@ -27,7 +28,7 @@ namespace YP_desktop.ViewModels
                     case 1:
                         break;
                     case 2:
-                        MainWindowViewModel.LinkMWViewModel.Uc = new MainWindowStudent();
+                        MainWindowViewModel.LinkMWViewModel.Uc = new MainWindowStudent(userSupabase);
                         break;
                     case 3:
                         MainWindowViewModel.LinkMWViewModel.Uc = new MainWindowTeacher();

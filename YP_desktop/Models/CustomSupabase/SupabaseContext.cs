@@ -19,7 +19,6 @@ namespace YP_desktop.Models.Supabase
             // Настройка опций
             var options = new SupabaseOptions
             {
-
                 AutoConnectRealtime = true,
                 AutoRefreshToken = true
             };
