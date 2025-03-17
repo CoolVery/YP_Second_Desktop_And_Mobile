@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Avalonia.Threading;
+using DynamicData;
 using ReactiveUI;
 using YP_desktop.Models;
 using YP_desktop.Models.Faculties;
@@ -18,9 +19,10 @@ namespace YP_desktop.ViewModels.HROfficer
     {
         List<Group> _allGroups = new List<Group>();
         Group _selectedGroup;
+        List<int> _allEvaluation = new List<int>();
         ObservableCollection<FacultyInsert> _allFaculty = new ObservableCollection<FacultyInsert>();
         FacultyInsert _SelectedFaculty = new FacultyInsert();
-        ObservableCollection<StudentFacultyJoinTable> _allFacultyNewUser = new ObservableCollection<StudentFacultyJoinTable>();
+        ObservableCollection<FacultyInsert> _allFacultyNewUser = new ObservableCollection<FacultyInsert>();
         FacultyInsert _SelectedFacultyNewUser = new FacultyInsert();
         StudentInsert _newStudent = new StudentInsert();
         User _newUser = new User();
@@ -75,6 +77,11 @@ namespace YP_desktop.ViewModels.HROfficer
             get => _newUser; 
             set => this.RaiseAndSetIfChanged(ref _newUser, value); 
         }
+        public List<int> AllEvaluation 
+        { 
+            get => _allEvaluation; 
+            set => this.RaiseAndSetIfChanged(ref _allEvaluation, value); 
+        }
 
         public CreateNewStudentViewModel()
         {
@@ -122,6 +129,7 @@ namespace YP_desktop.ViewModels.HROfficer
             if (SelectedFaculty != null)
             {
                 AllFacultyNewUser.Add(SelectedFaculty);
+                AllEvaluation.Add(2);
                 AllFaculty.Remove(SelectedFaculty);
             }
         }
@@ -130,6 +138,7 @@ namespace YP_desktop.ViewModels.HROfficer
             if (SelectedFacultyNewUser != null)
             {
                 AllFaculty.Add(SelectedFacultyNewUser);
+                AllEvaluation.RemoveAt(AllFacultyNewUser.IndexOf(SelectedFacultyNewUser));
                 AllFacultyNewUser.Remove(SelectedFacultyNewUser);
             }
         }
@@ -167,7 +176,7 @@ namespace YP_desktop.ViewModels.HROfficer
                         StudentFaculty studentFaculty = new StudentFaculty();
                         studentFaculty.StudentId = newStudent.Model.Id;
                         studentFaculty.FacultyId = item.Id;
-                        studentFaculty.Evaluation = item.;
+                        studentFaculty.Evaluation = 2;
                         studentFaculties.Add(studentFaculty);
                     }
                     var responseStudentFaculty = await MainWindowViewModel.LinkMWViewModel.SupabaseService.Supabase.From<StudentFaculty>().Insert(studentFaculties);
