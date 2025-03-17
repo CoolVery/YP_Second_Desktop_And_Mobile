@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ReactiveUI;
 using YP_desktop.Models.Faculties;
+using YP_desktop.Views;
 using YP_desktop.Views.HROfficer;
 
 namespace YP_desktop.ViewModels.HROfficer
@@ -84,6 +85,10 @@ namespace YP_desktop.ViewModels.HROfficer
                     CurrentFaculties = _allFaculties;
                     break;
             }
+        }
+        public void ToAuth()
+        {
+            MainWindowViewModel.LinkMWViewModel.Uc = new Authorization();
         }
     }
 }

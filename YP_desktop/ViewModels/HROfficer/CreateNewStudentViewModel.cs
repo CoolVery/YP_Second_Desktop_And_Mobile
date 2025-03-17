@@ -19,7 +19,7 @@ namespace YP_desktop.ViewModels.HROfficer
     {
         List<Group> _allGroups = new List<Group>();
         Group _selectedGroup;
-        List<int> _allEvaluation = new List<int>();
+        ObservableCollection<FacultyEvaluation> _allEvaluation = new ObservableCollection<FacultyEvaluation>();
         ObservableCollection<FacultyInsert> _allFaculty = new ObservableCollection<FacultyInsert>();
         FacultyInsert _SelectedFaculty = new FacultyInsert();
         ObservableCollection<FacultyInsert> _allFacultyNewUser = new ObservableCollection<FacultyInsert>();
@@ -77,7 +77,7 @@ namespace YP_desktop.ViewModels.HROfficer
             get => _newUser; 
             set => this.RaiseAndSetIfChanged(ref _newUser, value); 
         }
-        public List<int> AllEvaluation 
+        public ObservableCollection<FacultyEvaluation> AllEvaluation 
         { 
             get => _allEvaluation; 
             set => this.RaiseAndSetIfChanged(ref _allEvaluation, value); 
@@ -129,7 +129,12 @@ namespace YP_desktop.ViewModels.HROfficer
             if (SelectedFaculty != null)
             {
                 AllFacultyNewUser.Add(SelectedFaculty);
-                AllEvaluation.Add(2);
+                AllEvaluation.Add(
+                    new FacultyEvaluation()
+                    {
+                        Faculty = SelectedFaculty,
+                        Evaluation = 2
+                    });
                 AllFaculty.Remove(SelectedFaculty);
             }
         }
@@ -138,7 +143,7 @@ namespace YP_desktop.ViewModels.HROfficer
             if (SelectedFacultyNewUser != null)
             {
                 AllFaculty.Add(SelectedFacultyNewUser);
-                AllEvaluation.RemoveAt(AllFacultyNewUser.IndexOf(SelectedFacultyNewUser));
+                AllEvaluation.Remove(AllEvaluation.FirstOrDefault(x => x.Faculty.Name == SelectedFacultyNewUser.Name));
                 AllFacultyNewUser.Remove(SelectedFacultyNewUser);
             }
         }
@@ -173,10 +178,11 @@ namespace YP_desktop.ViewModels.HROfficer
                     List<StudentFaculty> studentFaculties = new List<StudentFaculty>();
                     foreach (var item in AllFacultyNewUser)
                     {
+
                         StudentFaculty studentFaculty = new StudentFaculty();
                         studentFaculty.StudentId = newStudent.Model.Id;
                         studentFaculty.FacultyId = item.Id;
-                        studentFaculty.Evaluation = 2;
+                        studentFaculty.Evaluation = AllEvaluation.FirstOrDefault(x => x.Faculty.Name == item.Name).Evaluation;
                         studentFaculties.Add(studentFaculty);
                     }
                     var responseStudentFaculty = await MainWindowViewModel.LinkMWViewModel.SupabaseService.Supabase.From<StudentFaculty>().Insert(studentFaculties);

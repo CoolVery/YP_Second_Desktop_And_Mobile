@@ -78,15 +78,15 @@ namespace YP_desktop.ViewModels.StudentFolder
                 {
                     var worksheet = package.Workbook.Worksheets.Add("Отчет оценок");
                     int countValues = 1;
-                    int summEvaluation = 0;
+                    float summEvaluation = 0.0f;
                     foreach (var item in _currentstudentFaculty)
                     {
                         worksheet.Cells[$"A{countValues}"].Value = item.FacultyId.Name;
                         worksheet.Cells[$"B{countValues}"].Value = item.Evaluation;
                         countValues++;
-                        summEvaluation += Convert.ToInt32(item.Evaluation);
+                        summEvaluation += (float)item.Evaluation;
                     }
-                    double averageValue = summEvaluation / --countValues;
+                    float averageValue = summEvaluation / (countValues - 1);
                     worksheet.Cells[$"A{countValues + 1}"].Value = $"{CurrentStudent.FullName}";
                     worksheet.Cells[$"B{countValues + 1}"].Value = $"Среднее значение оценок - {averageValue}";
                     worksheet.Columns.AutoFit();
