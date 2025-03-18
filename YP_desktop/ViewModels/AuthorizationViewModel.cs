@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Primitives;
 using ReactiveUI;
 using YP_desktop.Models.Students;
 using YP_desktop.Models.Supabase;
@@ -14,10 +16,12 @@ namespace YP_desktop.ViewModels
 	{
 		string _login = default!;
 		string _password = default!;
+        char _passwordChar = '*';
+        public string Login { get => _login; set => this.RaiseAndSetIfChanged(ref _login, value); }
+        public string Password { get => _password; set => this.RaiseAndSetIfChanged(ref _password, value); }
+        public char PasswordChar { get => _passwordChar; set => this.RaiseAndSetIfChanged(ref _passwordChar, value); }
 
-        public string Login { get => _login; set => this.RaiseAndSetIfChanged( ref _login, value); }
-        public string Password { get => _password; set => this.RaiseAndSetIfChanged( ref _password, value); }
-		public async void SignIn()
+        public async void SignIn()
 		{
             AuthService authService = new AuthService();
             var userSupabase = await authService.SignUpAsync(Login, Password);
@@ -38,10 +42,18 @@ namespace YP_desktop.ViewModels
                         break;
                 }
             }
-
-
-
-
+        }
+        public void WatchPassword()
+        {
+            switch (PasswordChar)
+            {
+                case '*':
+                    PasswordChar = '\0';
+                    break;
+                case '\0':
+                    PasswordChar = '*';
+                    break;
+            }
         }
 	}
 }

@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="2800" d:DesignHeight="450"
              x:Class="YP_desktop.Views.HROfficer.AllFaculty"
 			 xmlns:vm="using:YP_desktop.ViewModels.HROfficer"
 			 x:DataType="vm:AllFacultyViewModel">
@@ -28,6 +28,18 @@
 				Watermark="Поиск по названию"
 				CornerRadius="10"
 				Text="{Binding SearchByName}"/>
+			<ComboBox
+				VerticalAlignment="Center"
+				Margin="30 0 0 0"
+				ItemsSource="{Binding AllDean}"
+				SelectedItem="{Binding SelectedDean}">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock 
+							Text="{Binding FullName}"/>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
 			<Button
 				Margin="30 0 0 0"
 				Padding="0 10 0 10"
@@ -44,6 +56,20 @@
 				CornerRadius="10"
 				Content="Просмотреть студентов"
 				Command="{Binding ToAllStudent}"/>
+			<Button
+				Margin="30 0 0 0"
+				Padding="20 10 20 10"
+				HorizontalContentAlignment="Center"
+				CornerRadius="10"
+				Content="Получить список факультетов (.xlsx)"
+				Command="{Binding LoadCurrentListFaculties}"/>
+			<TextBlock 
+				VerticalAlignment="Center"
+				FontSize="20"
+				Foreground="LightGreen"
+				Margin="20 0 0 0"
+				Text="Файл создан"
+				IsVisible="{Binding IsFileCreated}"/>
 		</StackPanel>
 		<ListBox Grid.Row="1" ItemsSource="{Binding CurrentFaculties}">
 			

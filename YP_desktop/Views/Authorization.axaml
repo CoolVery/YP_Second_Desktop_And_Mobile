@@ -9,7 +9,7 @@
 
 
 
-	<StackPanel
+	<Grid
 		Width="400"
 		VerticalAlignment="Center">
 		<Border
@@ -17,23 +17,40 @@
 			BorderThickness="3"
 			CornerRadius="20"
 			BoxShadow="15 15 10 0 Black">
-			<StackPanel>
+			<Grid
+				RowDefinitions="*, *, *, *">
 				<TextBlock
 					Padding="0 10 0 30 "
 					TextAlignment="Center"
 					Text="Авторзация"
 					FontSize="30"/>
 				<TextBox
-					Margin="20 0 20 20"
+					Grid.Row="1"
+					Margin="20 20 20 20"
 					Watermark="Логин"
 					Text="{Binding Login}"
 					CornerRadius="20"/>
-				<TextBox
-					Margin="20 0 20 30"
-					Watermark="Пароль"
-					Text="{Binding Password}"
-					CornerRadius="20"/>
-				<Button 
+				<Grid
+					Grid.Row="2"
+					ColumnDefinitions="*, Auto"
+					Margin="20 20 20 20">
+					<TextBox
+						VerticalContentAlignment="Center"
+						Watermark="Пароль"
+						Text="{Binding Password}"
+						CornerRadius="20 0 0 20"
+						PasswordChar="{Binding PasswordChar}"/>
+					<Button
+						Padding="10 10 10 10"
+						CornerRadius="0 20 20 0"
+						Grid.Row="2"
+						Content="Скрыть пароль"
+						Grid.Column="1"
+						Command="{Binding WatchPassword}">
+					</Button>
+				</Grid>
+				<Button
+					Grid.Row="3"
 					HorizontalAlignment="Center"
 					Content="Войти"
 					Padding="50 10 50 10"
@@ -42,8 +59,8 @@
 					CornerRadius="20"
 					Command="{Binding SignIn}"
 					/>
-			</StackPanel>
+			</Grid>
 		</Border>
 
-	</StackPanel>
+	</Grid>
 </UserControl>
